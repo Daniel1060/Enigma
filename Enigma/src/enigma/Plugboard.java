@@ -12,6 +12,13 @@ import java.util.*;
  */
 class Plugboard {
     private Map<Character, Character> connections = new HashMap();
+    private int maxSize;
+    private int currentSize;
+    
+    public Plugboard(){
+        maxSize=13;
+        currentSize=0;
+    }
     
     
     // Input letters get added to hashmap as keys with their opposite as values
@@ -20,8 +27,12 @@ class Plugboard {
             System.out.println(letter1 +" and "+letter2 +" are already connected!");
             return;
         }
-        connections.put(letter1, letter2);
-        connections.put(letter2, letter1);
+        if(currentSize<maxSize){
+            connections.put(letter1, letter2);
+            connections.put(letter2, letter1);            
+        }
+
+        currentSize++;
     }
     
     // Checks if input is connected to another value and if so returns that value, otherwise returns original input
