@@ -12,11 +12,12 @@ class Rotor {
     private char[] wiring;
     private int position;
     private char[] notch;
-    private char[] turnover;
+    private boolean turnover;
 
     public Rotor(char[] wiring, int position) {
         this.wiring = wiring;
         this.position = position;
+        turnover = false;
     }
     
     public void setInputPosition(char inputLetter){
