@@ -33,22 +33,7 @@ class Rotor {
             }
         }
     }
-    
-    public char getCurrentLetter(){
-        return (char) (position+'A');
-    }
-    
-    public char encryptForward(char input){
-        return (char)(wiring[input-'A']);
-    }
-    public char encryptBackward(char input){
-        for(int i=0; i<wiring.length;i++){
-            if(wiring[i]==input){
-                return(char)(i+'A');
-            }
-        }
-        return '?';
-    }
+
     public void rotate(){
         if(position == wiring.length-1){
             position=0;
@@ -56,4 +41,32 @@ class Rotor {
             position++;
         }
     }
+
+    public char encryptForward(char input){
+        return (char)(wiring[charToIndex(input)]);
+    }
+    public char encryptBackward(char input){
+        for(int i=0; i<wiring.length;i++){
+            if(wiring[i]==input){
+                return(char)(indexToChar(i));
+            }
+        }
+        return '?';
+    }
+
+    public int charToIndex(char letter){
+        return letter-65;
+    }
+    public char indexToChar(int index){
+        return (char) (index+65);
+    }
+    
+    public char getCurrentLetter(){
+        return (char) (position+'A');
+    }
+    
+    
+    
+
+    
 }
